@@ -1,4 +1,4 @@
-![Aerolab](./src/assets/logo.svg "Aerolab")
+![Aerolab](./src/assets/aerolab-logo.svg "Aerolab")
 
 # Aerolab challenge
 Se debe crear una tienda de productos basada en puntos.
