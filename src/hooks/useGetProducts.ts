@@ -8,13 +8,16 @@ interface GetDataParams {
 
 
 
-function useGetProducts({API}: GetDataParams): any
+function useGetProducts({API}: GetDataParams): [Product[] | [], 
+                                                React.Dispatch<React.SetStateAction<Product[]>>]
 {
     const [data, setData] = useState<Product[]>([])
 
     const getDataFetch = async () => {
-        const dataRes = await getData(API)
-        setData(dataRes)
+        let dataProduct:Product[] | null  = await getData(API)
+        dataProduct = dataProduct ?? []
+
+        setData(dataProduct)
     }
 
     useEffect(() => {getDataFetch()}, [API])
