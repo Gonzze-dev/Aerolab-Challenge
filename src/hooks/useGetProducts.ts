@@ -1,28 +1,26 @@
 import { useEffect, useState } from 'react'
 import getData from '../utilities/getData';
-import Product from '../interfaces/product';
+import Product from '../interfaces/Product';
+import UseProductType from '../interfaces/UseProductType';
 
 interface GetDataParams {
     API: string;
 }
 
-
-
-function useGetProducts({API}: GetDataParams): [Product[] | [], 
-                                                React.Dispatch<React.SetStateAction<Product[]>>]
+function useGetProducts({API}: GetDataParams): UseProductType
 {
-    const [data, setData] = useState<Product[]>([])
+    const [products, setProducts] = useState<Product[]>([])
 
     const getDataFetch = async () => {
         let dataProduct:Product[] | null  = await getData(API)
         dataProduct = dataProduct ?? []
 
-        setData(dataProduct)
+        setProducts(dataProduct)
     }
 
     useEffect(() => {getDataFetch()}, [API])
 
-    return [data, setData]
+    return {products, setProducts}
 }
 
 export default useGetProducts
