@@ -1,4 +1,6 @@
-[
+import Product from "./interfaces/Product";
+
+export const products: Product[] = [
     {
         "img": {
             "url": "https://coding-challenge-api.aerolab.co/images/LenovoYogaTab-x1.png",
