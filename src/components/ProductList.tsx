@@ -1,14 +1,19 @@
 import '../css/components/ProductList.css'
 
 import useProductContext from '../hooks/useProductContext'
+import ShortByList from './ShortByList'
 import Product from '../interfaces/Product'
 import ProductCard from './ProductCard'
+
 
 const ProductList = () => {
   const {products} = useProductContext()
 
   return (
     <>
+    <div>
+      <ShortByList/>
+    </div>
     <div className='ProductList'>
     {products.map((product: Product, index) => 
         <ProductCard key={index} 

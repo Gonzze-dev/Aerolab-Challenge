@@ -5,6 +5,7 @@ import coin_SVG from '../assets/icons/coin.svg'
 import Product from '../interfaces/Product'
 import { useEffect, useState } from 'react'
 import { useMoneyContext } from '../providers/MoneyProvider' 
+import Button from '../UI/Button'
 
 const ProductCard = (product: Product) => { 
     const {money, setMoney} = useMoneyContext()
@@ -46,7 +47,7 @@ const ProductCard = (product: Product) => {
               <p className='BuildProductInfo-cost'>{product.cost}</p>
               <img className='BuildProductInfo-Coin_SVG' src={coin_SVG} alt="coin_SVG" width={30} height={30}/>
             </span>
-            <button className='BuildProduct-button' onClick={shopProduct}>Redeem now</button>
+            <Button className='BuildProduct-button' onClick={shopProduct}>Redeem now</Button>
           </div>
           :
           null

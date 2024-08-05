@@ -47,14 +47,10 @@
 
 .BuildProduct-button
 {
-    border: none;
-    width: auto;
-    color: rgb(131, 131, 131);
-    background-color: white;
+
     font-size: 16px;
     padding: 10px 25% 10px 25%;
-    border-radius: 20px;
-    cursor: pointer;
+
 }
 
 
