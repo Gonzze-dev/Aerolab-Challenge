@@ -1,0 +1,45 @@
+.ShortByList-Container
+{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    font-size: 20px;
+    border-left: #EDEDED 2px solid
+}
+
+.ShortByList-Title
+{
+    margin: 0px 20px 0px 0px;
+    padding-left: 20px;
+    width: max-content;
+    color: rgb(131, 131, 131);
+}
+
+.ShortByList-Buttons
+{
+    display: flex;
+    justify-content: space-around;
+    width: max-content;
+    gap: 20px;
+}
+
+.ShortByList-Button{
+    padding: 14px 34px 14px 34px;
+    font-size: 20px;
+}
+
+#ButtonUI.ShortByList-Button:hover{
+    color: white;
+    background-color: #0AD4FA;
+    transition: background-color 0.3s ease;
+}
+
+#ButtonUI.ShortByList-Button.active
+{
+    color: white;
+    background-color: #0AD4FA;
+    
+}
+

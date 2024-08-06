@@ -1,5 +1,13 @@
 body
 {
     font-family: 'Roboto', sans-serif;
-
+    background-color: #fcfcfc;
 }
+.ProductSectionContainer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+

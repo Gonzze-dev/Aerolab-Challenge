@@ -1,0 +1,9 @@
+.ProductFooter-Container
+{
+    display: flex;
+    align-items: center;
+    height:73.4375px;
+    padding: 40px 0px 0px 0px;
+
+    border-bottom: #EDEDED 2px solid;
+}

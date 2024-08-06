@@ -1,0 +1,18 @@
+.CategoryContainer
+{
+    position: relative;
+    height: min-content;
+    margin-bottom: 60px;
+}
+
+.Category-Img
+{
+    width: 100%;
+}
+.Category-Type{
+    position: absolute;
+    margin: 0px 0px 4% 10%;
+    font-size: 64px;
+    color: white;
+    bottom: 0;
+}

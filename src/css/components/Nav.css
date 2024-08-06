@@ -1,0 +1,43 @@
+.NavBar
+{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 40px;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NavBar-UserInfo
+{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.NavBar-UserInfo-Name
+{
+    margin: 0px;
+}
+
+.NavBar-UserInfo-Money-Container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(237, 237, 237);
+    min-width: 100px;
+    padding: 10px 30px 10px 30px;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.NavBar-UserInfo-Money
+{
+    margin: 0px 5px 0px 0px;
+}
