@@ -26,7 +26,7 @@ const ProductCard = (product: Product) => {
 
     const shopProduct = () => {
       const dif = money - product.cost
-
+      console.log(product)
       setMoney(dif)
     }
 

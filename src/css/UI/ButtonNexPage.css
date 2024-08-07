@@ -1,0 +1,17 @@
+#ButtonPage{
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    height: auto;
+
+    transition: transform ease 0.3s;
+}
+
+#ButtonPage:hover
+{
+    transform: scale(1.1);
+}

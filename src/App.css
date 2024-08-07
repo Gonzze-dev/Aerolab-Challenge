@@ -11,3 +11,23 @@ body
     margin-bottom: 50px;
 }
 
+.ProductSection
+{
+    width: 1188px;
+}
+
+
+
+@media (max-width: 1250) {
+    .ProductSectionContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ProductSection
+    {
+        width: auto;
+    }
+}
+

@@ -7,24 +7,27 @@ import Category from './components/Category'
 import ProductToolbar from './components/ProductToolbar'
 import ProductList from './components/ProductList'
 import ProductFooter from './components/ProductFooter'
-
+import { ProductPageProvider } from './providers/ProductPageProvider'
+import { PagedProductProvider } from './providers/PagedArrayProvider'
 
 function App() {
     
     return (
       <ProductProvider>
         <MoneyProvider>
-          <Nav/>
-          <Category/>
-          <div className='ProductSectionContainer'>
-            <div className='ProductSection'>
-              <ProductToolbar/>
-              <ProductList/>
-              <ProductFooter/>
-            </div>
-          </div>
-          
-          
+          <ProductPageProvider>
+          <PagedProductProvider>
+                <Nav/>
+                <Category/>
+                <div className='ProductSectionContainer'>
+                  <div className='ProductSection'>
+                    <ProductToolbar/>
+                    <ProductList/>
+                    <ProductFooter/>
+                  </div>
+                </div>
+              </PagedProductProvider>
+            </ProductPageProvider>
         </MoneyProvider>
       </ProductProvider>
     )

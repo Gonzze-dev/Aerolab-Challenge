@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import '../css/components/ShortByList.css'
-import useProductContext from '../hooks/useProductContext'
+
 import Button from '../UI/Button'
 import sortByHighest from '../utilities/sortByHighest'
 import sortByLowest from '../utilities/sortByLowest'
+import { usePagedProductContext } from '../providers/PagedArrayProvider'
 
 const ShortByList = () => {
-    const {products, setProducts} = useProductContext()
+    const {products, setProducts} = usePagedProductContext()
     const [active, setActive] = useState('')
 
     const isActive = (nameBtn: string) => {
-        console.log(nameBtn)
+
         setActive(nameBtn)
     }
     const mostRecent = () => {

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useContext, useState } from 'react'
 // import useGetProducts from '../hooks/useGetProducts'
 // import { API } from '../config'
 import UseProductType from '../interfaces/UseProductType';
@@ -28,4 +28,15 @@ function ProductProvider({children}: ProductProviderProps): JSX.Element {
     )
 }
 
-export {ProductContext, ProductProvider}
+function useProductContext(): UseProductType
+{
+    const {products, setProducts} = useContext(ProductContext);
+
+    if (!products) {
+        throw new Error('useProductContext debe ser usado dentro de un ProductProvider');
+    }
+
+    return {products, setProducts};
+}
+
+export {useProductContext, ProductProvider}
