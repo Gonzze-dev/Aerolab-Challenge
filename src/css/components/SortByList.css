@@ -1,0 +1,76 @@
+.SortByList-Container
+{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    font-size: 20px;
+    border-left: #EDEDED 2px solid
+}
+
+.SortByList-Title
+{
+    margin: 0px 20px 0px 0px;
+    padding-left: 20px;
+    width: max-content;
+    color: rgb(131, 131, 131);
+}
+
+.SortByList-Buttons
+{
+    display: flex;
+    justify-content: space-around;
+    width: max-content;
+    gap: 20px;
+}
+
+.SortByList-Button{
+    padding: 14px 34px 14px 34px;
+    font-size: 20px;
+}
+
+#ButtonUI.SortByList-Button:hover,
+.SortByList-Select:hover{
+    color: white;
+    background-color: #0AD4FA;
+    transition: background-color 0.3s ease;
+}
+
+#ButtonUI.SortByList-Button.active,
+.SortByList-Select:active
+{
+    color: white;
+    background-color: #0AD4FA;
+}
+
+
+.SortByList-Select
+{
+    display: none;
+    margin-left: 10px;
+    appearance: none;
+    background-color: rgb(237, 237, 237);
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 14px 14px 14px 14px;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(131, 131, 131);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+@media(max-width: 1000px) {
+    .SortByList-Buttons,
+    .SortByList-Title
+    {
+        display: none;
+    }
+    .SortByList-Select
+    {
+        display: flex;
+    }
+}
+

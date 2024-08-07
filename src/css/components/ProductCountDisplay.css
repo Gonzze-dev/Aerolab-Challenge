@@ -7,3 +7,11 @@
     margin: 0px 20px 0px 0px;
     box-sizing: border-box;
 }
+
+@media (max-width: 1000px) {
+    .ProductCountDisplay
+    {
+        margin: 0px 5px 0px 0px;
+    }
+    
+}

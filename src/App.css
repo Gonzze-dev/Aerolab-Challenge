@@ -16,13 +16,12 @@ body
     width: 1188px;
 }
 
+@media (max-width: 1250px) {
 
-
-@media (max-width: 1250) {
-    .ProductSectionContainer{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+    .ProductSectionContainer
+    {
+        align-items: normal;
+        margin: 0px 5px 0px 5px;
     }
 
     .ProductSection
