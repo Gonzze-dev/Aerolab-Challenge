@@ -1,66 +1,44 @@
-import { useState } from 'react'
 import '../css/components/SortByList.css'
 
 import Button from '../UI/Button'
-import sortByHighest from '../utilities/sortByHighest'
-import sortByLowest from '../utilities/sortByLowest'
+
 import { usePagedProductContext } from '../providers/PagedArrayProvider'
 
 const SortByList = () => {
-    const {products, setProducts} = usePagedProductContext()
-    const [active, setActive] = useState('')
+    const {orderMethodName,setOrderMethodName} = usePagedProductContext()
 
-    const isActive = (nameBtn: string) => {
 
-        setActive(nameBtn)
+    const activeOrderInSelect = (e: any) =>
+    {
+        const value = e.target.value
+        setOrderMethodName(value)
     }
-    const mostRecent = () => {
-        const newProducts = [...products]
-        newProducts.sort((a, b) => sortByHighest(b._id, a._id))
-        setProducts(newProducts)
-    }
-
-    const lowestPrice = () => {
-        const newProducts = [...products]
-        newProducts.sort((a,b) => sortByLowest(a.cost, b.cost))
-        setProducts(newProducts)
-    }
-
-    const highestPrice = () => {
-        const newProducts = [...products]
-        newProducts.sort((a,b) => sortByHighest(a.cost, b.cost))
-        setProducts(newProducts)
-    }
-
     return (
         <div className='SortByList-Container'>
             <p className='SortByList-Title'>Sort by: </p>
                 <div className='SortByList-Buttons'>
-                    <Button className={`SortByList-Button ${active == 'mostRecent' ? 'active' : ''}`} 
-                    onClick={() => {mostRecent(); 
-                                    isActive('mostRecent');}
+                    <Button className={`SortByList-Button ${orderMethodName == 'mostrecent' ? 'active' : ''}`} 
+                    onClick={() => {setOrderMethodName('mostrecent')}
                             }
                         >Most Recent
                     </Button>
-                    <Button className={`SortByList-Button ${active == 'lowestPrice' ? 'active' : ''}`}  
-                            onClick={() =>{lowestPrice(); 
-                                            isActive('lowestPrice');}
+                    <Button className={`SortByList-Button ${orderMethodName == 'lowestprice' ? 'active' : ''}`}  
+                            onClick={() =>{setOrderMethodName('lowestprice')}
                                     }>
                         Lowest price
                     </Button>
-                    <Button className={`SortByList-Button ${active == 'highestPrice' ? 'active' : ''}`}  
-                            onClick={() => {highestPrice(); 
-                                            isActive('highestPrice');}
+                    <Button className={`SortByList-Button ${orderMethodName == 'highestprice' ? 'active' : ''}`}  
+                            onClick={() => {setOrderMethodName('highestprice')}
                                     }>
                         Highest price
                     </Button>
                 </div>
 
-                <select className='SortByList-Select' name="SortBy-options">
+                <select className='SortByList-Select' name="SortBy-options" onChange={activeOrderInSelect}>
                     <option value="">Sort By</option>
-                    <option value="">Most recent</option>
-                    <option value="">Lowet price</option>
-                    <option value="">Highest price</option>
+                    <option value="mostrecent">Most recent</option>
+                    <option value="lowestprice">Lowest price</option>
+                    <option value="highestprice">Highest price</option>
                 </select>
 
         </div>
