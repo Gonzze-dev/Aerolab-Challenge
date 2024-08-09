@@ -1,14 +1,12 @@
 import './App.css'
+
 import { ProductProvider } from './providers/ProductProvider'
 import { MoneyProvider } from './providers/MoneyProvider'
-
-import Nav from './components/Nav'
-import Category from './components/Category'
-import ProductToolbar from './components/ProductToolbar'
-import ProductList from './components/ProductList'
-import ProductFooter from './components/ProductFooter'
 import { ProductPageProvider } from './providers/ProductPageProvider'
 import { PagedProductProvider } from './providers/PagedArrayProvider'
+
+import Nav from './components/Nav'
+import Home from './pages/Home'
 
 function App() {
     
@@ -16,16 +14,9 @@ function App() {
       <ProductProvider>
         <MoneyProvider>
           <ProductPageProvider>
-          <PagedProductProvider>
+              <PagedProductProvider>
                 <Nav/>
-                <Category/>
-                <div className='ProductSectionContainer'>
-                  <div className='ProductSection'>
-                    <ProductToolbar/>
-                    <ProductList/>
-                    <ProductFooter/>
-                  </div>
-                </div>
+                <Home/>
               </PagedProductProvider>
             </ProductPageProvider>
         </MoneyProvider>
