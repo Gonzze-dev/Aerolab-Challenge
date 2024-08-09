@@ -1,0 +1,26 @@
+.HistoryContainer
+{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.HistoryContainer-Products
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: max-content;
+    width: 40%;
+    gap: 10px;
+
+    padding-left: 20px;
+    padding-right:  20px;
+}
+.HistoryContainer-Title
+{
+    font-size: 62px;
+}

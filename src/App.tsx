@@ -7,6 +7,7 @@ import { PagedProductProvider } from './providers/PagedArrayProvider'
 
 import Nav from './components/Nav'
 import Home from './pages/Home'
+import History from './pages/History'
 
 function App() {
     
@@ -16,7 +17,9 @@ function App() {
           <ProductPageProvider>
               <PagedProductProvider>
                 <Nav/>
-                <Home/>
+                {/* <Home/> */}
+                <History/>
+
               </PagedProductProvider>
             </ProductPageProvider>
         </MoneyProvider>

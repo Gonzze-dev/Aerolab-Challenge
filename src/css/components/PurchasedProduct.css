@@ -1,0 +1,92 @@
+.PurchasedProduct{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(254, 254, 254);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 544px;
+    width: 100%;
+    font-size: 16px;
+    justify-content: space-between;
+}
+
+.PurchasedProduct-Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.PurchasedProduct-Img
+{
+    border-right: 2px solid #EDEDED
+}
+
+.PurchasedProduct-Info
+{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    justify-content: center;
+    
+}
+
+.PurchasedProduct-Info-Category
+{
+    margin: 0px 0px 10px 0px;
+    color: rgb(131, 131, 131);
+}
+
+.PurchasedProduct-Info-Name
+{
+    font-size: 18px;
+}
+
+.PurchasedProduct-Info-Category,
+.PurchasedProduct-Info-Name
+{
+    width: max-content;
+}
+
+.PurchasedProduct-Info-Cost-Container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    gap: 10px;
+    font-size: 24px;
+}
+
+.PurchasedProduct-Info-Cost
+{
+    margin: 0px;   
+}
+
+@media (max-width: 720px)
+{
+    .PurchasedProduct
+    {
+        min-width: min-content;
+        flex-direction: column;
+    }
+    .PurchasedProduct-Container
+    {
+        flex-direction: column;
+    }
+    .PurchasedProduct-Info
+    {
+        align-items: center;
+    }
+    .PurchasedProduct-Img
+    {
+        border-right: none;
+        border-bottom: 2px solid #EDEDED;
+    }
+    .PurchasedProduct-Info-Cost-Container
+    {
+        
+        margin-top: 5px;
+        flex-direction: row;
+    }
+}
