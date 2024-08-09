@@ -9,8 +9,13 @@ import Button from '../UI/Button'
 
 const ProductCard = (product: Product) => { 
     const {money, setMoney} = useMoneyContext()
-    const [isBuildeable, setIsBuildeable] = useState(money >= product.cost)
+    const [isBuildeable, setIsBuildeable] = useState<boolean>()
     const [mouseHover, setMouseHover] = useState(false)
+
+    useEffect(() => {
+      const buildeable = money >= product.cost;
+      setIsBuildeable(buildeable)
+    }, [product])
 
     const showBuildInfo = () =>
     {
@@ -22,11 +27,8 @@ const ProductCard = (product: Product) => {
       setMouseHover(false)
     }
 
-    
-
     const shopProduct = () => {
       const dif = money - product.cost
-      console.log(product)
       setMoney(dif)
     }
 
@@ -57,7 +59,7 @@ const ProductCard = (product: Product) => {
           {
             !isBuildeable ? 
             <span className='coin_SVG-Container'>  
-              You need {product.cost - money} 
+              You need {Math.abs(product.cost - money)}
               <img className='coin_SVG' src={coin_SVG} alt="coin_SVG" width={30} height={30}/>
             </span>
             :
