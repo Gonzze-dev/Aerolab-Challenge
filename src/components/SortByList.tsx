@@ -7,7 +7,11 @@ import { usePagedProductContext } from '../providers/PagedArrayProvider'
 const SortByList = () => {
     const {orderMethodName,setOrderMethodName} = usePagedProductContext()
 
-
+    const orderSelected:any = {
+        mostrecent: 'Most recent',
+        lowestprice: 'Lowest price',
+        highestprice: 'Highest price'
+    }
     const activeOrderInSelect = (e: any) =>
     {
         const value = e.target.value
@@ -34,8 +38,8 @@ const SortByList = () => {
                     </Button>
                 </div>
 
-                <select className='SortByList-Select' name="SortBy-options" onChange={activeOrderInSelect}>
-                    <option value="">Sort By</option>
+                <select className={`SortByList-Select ${orderMethodName ? 'active' : ''}`}name="SortBy-options" onChange={activeOrderInSelect}>
+                    <option value="">{orderSelected[orderMethodName]}</option>
                     <option value="mostrecent">Most recent</option>
                     <option value="lowestprice">Lowest price</option>
                     <option value="highestprice">Highest price</option>
