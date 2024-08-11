@@ -1,29 +1,15 @@
 import './App.css'
 
-import { ProductProvider } from './providers/ProductProvider'
-import { MoneyProvider } from './providers/MoneyProvider'
-import { ProductPageProvider } from './providers/ProductPageProvider'
-import { PagedProductProvider } from './providers/PagedArrayProvider'
+import AppProviders from './AppProviders'
+import AppRouter from './AppRouter'
 
-import Nav from './components/Nav'
-import Home from './pages/Home'
-import History from './pages/History'
 
 function App() {
     
     return (
-      <ProductProvider>
-        <MoneyProvider>
-          <ProductPageProvider>
-              <PagedProductProvider>
-                <Nav/>
-                {/* <Home/> */}
-                <History/>
-
-              </PagedProductProvider>
-            </ProductPageProvider>
-        </MoneyProvider>
-      </ProductProvider>
+      <AppProviders>
+        <AppRouter/>     
+      </AppProviders> 
     )
 }
 

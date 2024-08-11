@@ -1,3 +1,27 @@
+.NavLinks
+{
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.NavLink a
+{
+    text-decoration: none;
+    color: rgb(176, 176, 176);
+
+}
+
+.NavLink a:hover
+{
+    color: rgb(10, 212, 250);
+    transition: ease 0.3s color;
+}
 .NavBar
 {
     display: flex;
@@ -7,6 +31,14 @@
     padding: 20px;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+}
+.NavBar-NavLinks-Container
+{
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+    gap: 10px;
 }
 
 .NavBar-UserInfo
@@ -40,4 +72,10 @@
 .NavBar-UserInfo-Money
 {
     margin: 0px 5px 0px 0px;
+}
+
+@media (max-width: 500px) {
+    .NavLinks {
+        flex-wrap: wrap;
+    }
 }
