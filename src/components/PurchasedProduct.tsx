@@ -15,9 +15,9 @@ const PurchasedProduct = (product: Product) => {
         </div>
        
         <div className='PurchasedProduct-Info-Cost-Container'>
-                <img src={coinSvg} alt={`Cost of order ${product.name}`}  />
-                <p className='PurchasedProduct-Info-Cost'>{product.cost}</p>
-            </div>
+          <img src={coinSvg} alt={`Cost of order ${product.name}`}  />
+          <p className='PurchasedProduct-Info-Cost'>{product.cost}</p>
+        </div>
     </div>
   )
 }

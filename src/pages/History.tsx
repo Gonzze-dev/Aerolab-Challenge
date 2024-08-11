@@ -9,8 +9,9 @@ const History = () => {
 
     return (
         <div className='HistoryContainer'>
+            <h1 className='HistoryContainer-Title'>History</h1>
             <div className='HistoryContainer-Products'>
-                <h1 className='HistoryContainer-Title'>History</h1>
+                
                 {products.map((product: Product, index) => 
                     <PurchasedProduct key={index} {...product}/>)
                 }
