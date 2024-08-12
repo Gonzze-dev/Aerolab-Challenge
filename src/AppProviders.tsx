@@ -1,8 +1,8 @@
 import { ProductProvider } from './providers/ProductProvider'
-import { MoneyProvider } from './providers/MoneyProvider'
 import { ProductPageProvider } from './providers/ProductPageProvider'
 import { PagedProductProvider } from './providers/PagedArrayProvider'
 import { ReactNode } from 'react'
+import { UserProvieder } from './providers/UserProvider'
 
 interface Props
 {
@@ -11,15 +11,15 @@ interface Props
 
 const AppProviders = ({children} : Props) => {
     return (
-      <ProductProvider>
-        <MoneyProvider>
-          <ProductPageProvider>
-            <PagedProductProvider>
-              {children}
-            </PagedProductProvider>
-          </ProductPageProvider>
-        </MoneyProvider>
-      </ProductProvider>
+      <UserProvieder>
+        <ProductProvider>
+            <ProductPageProvider>
+              <PagedProductProvider>
+                {children}
+              </PagedProductProvider>
+            </ProductPageProvider>
+        </ProductProvider>
+      </UserProvieder>
     );
   }
 

@@ -3,19 +3,21 @@ import buyBlue_SVG from '../assets/icons/buy-blue.svg'
 import buyWhite_SVG from '../assets/icons/buy-white.svg'
 import coin_SVG from '../assets/icons/coin.svg'
 import Product from '../interfaces/Product'
-import { useEffect, useState } from 'react'
-import { useMoneyContext } from '../providers/MoneyProvider' 
+import { useMemo, useState } from 'react'
 import Button from '../UI/Button'
+import { useUserContext } from '../providers/UserProvider'
+
+import User from '../interfaces/User'
+import { usePagedProductContext } from '../providers/PagedArrayProvider'
 
 const ProductCard = (product: Product) => { 
-    const {money, setMoney} = useMoneyContext()
-    const [isBuildeable, setIsBuildeable] = useState<boolean>()
+    const {products} = usePagedProductContext()
+    const {user, setUser} = useUserContext()
     const [mouseHover, setMouseHover] = useState(false)
 
-    useEffect(() => {
-      const buildeable = money >= product.cost;
-      setIsBuildeable(buildeable)
-    }, [product])
+    const isBuildeable = useMemo(() => {
+      return user.points >= product.cost
+    },[user.points, products])
 
     const showBuildInfo = () =>
     {
@@ -28,16 +30,12 @@ const ProductCard = (product: Product) => {
     }
 
     const shopProduct = () => {
-      const dif = money - product.cost
-      setMoney(dif)
+      const newUser:User = {...user}
+      const dif = user.points - product.cost
+      newUser.points = dif
+
+      setUser(newUser)
     }
-
-    useEffect(() => {
-      
-      const buildeable = money >= product.cost
-
-      setIsBuildeable(buildeable)
-    }, [money])
   
   return (
     <div className='ProductCard' onMouseEnter={showBuildInfo} onMouseLeave={hideBuildInfo}>
@@ -59,7 +57,7 @@ const ProductCard = (product: Product) => {
           {
             !isBuildeable ? 
             <span className='coin_SVG-Container'>  
-              You need {Math.abs(product.cost - money)}
+              You need {Math.abs(product.cost - user.points)}
               <img className='coin_SVG' src={coin_SVG} alt="coin_SVG" width={30} height={30}/>
             </span>
             :

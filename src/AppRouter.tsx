@@ -5,6 +5,7 @@ import History from './pages/History';
 import Nav from './components/Nav';
 
 const AppRouter = () => {
+  
   return (
     <Router>
       <Nav />
