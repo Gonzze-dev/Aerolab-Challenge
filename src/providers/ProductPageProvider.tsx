@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
 import Page from '../interfaces/Page'
 import usePageType from '../interfaces/usePageType';
@@ -17,13 +17,17 @@ interface ProviderProps {
 const ProductContext = createContext<usePageType | undefined>(undefined)
 
 const ProductPageProvider = ({children}: ProviderProps) => {
-    const {products} =  useProductContext()
+    const {products, loading} =  useProductContext()
     
-    const size = Math.ceil(products.length/productsPerPage)
-
-    defaultValue.size = size
-
     const [page, setPage] = useState<Page>({...defaultValue})
+
+    useEffect(() => {
+        if (!loading){
+            const size = Math.ceil(products.length/productsPerPage)
+            defaultValue.size = size
+            setPage({...defaultValue})
+        }
+    },[products])
     
     return (
         <ProductContext.Provider value={{page, setPage}}>

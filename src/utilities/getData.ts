@@ -1,9 +1,9 @@
-async function getData(API: string): Promise<any> 
+async function getData<T>(API: string, options: RequestInit = {}): Promise<T>
 {
-    let data = null
+    let data = undefined
 
     try {
-        const response = await fetch(API)
+        const response = await fetch(API, options)
         data = await response.json()
 
     } catch (e) {

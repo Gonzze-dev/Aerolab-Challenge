@@ -1,10 +1,11 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { createContext, ReactNode, useContext, useEffect } from 'react'
 import { API_GET_USER } from '../config'
 
 import UseUserType from '../interfaces/UseUserType'
-import useGetUser from '../hooks/useGetUser'
+
 import User from '../interfaces/User'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import useFetch from '../hooks/useFetch'
 
 
 interface Props {
@@ -12,9 +13,9 @@ interface Props {
 }
 
 const defaultUser: User = {
-    id: '',
+    id: '1',
     name: 'Gonzalo',
-    points: 0,
+    points: 2000,
     reedemHistory: [],
     createDate: ''
 }
@@ -27,9 +28,15 @@ const defaultUseUser:UseUserType = {
 const UserContext = createContext<UseUserType>(defaultUseUser)
 
 const UserProvieder = ({children}: Props) => {
-    const {user} = useGetUser({API_GET_USER: API_GET_USER})
-    const [userLS, setUserLS] = useLocalStorage<User>('User', user)
-    
+    //API_GET_USER
+    const {data, loading} = useFetch<User>({API: ''})
+    const [userLS, setUserLS] = useLocalStorage<User>('User', defaultUser)
+
+    useEffect(() => {
+        if (!loading) 
+            setUserLS(data ? data : defaultUser)
+    },[loading])
+
     return (
         <UserContext.Provider value={{user: userLS, setUser: setUserLS}}>
             {children}

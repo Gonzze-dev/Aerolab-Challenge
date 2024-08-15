@@ -5,8 +5,8 @@ import UseProductType from '../interfaces/UseProductType';
 
 import { usePageContext } from './ProductPageProvider';
 import { useProductContext } from './ProductProvider';
-import paginateArray from '../utilities/paginateArray';
-import { highestPrice, lowestPrice, mostRecent } from '../utilities/sortByProduc';
+
+import sortBy from '../utilities/sortBy';
 
 
 interface IPagedProduct extends UseProductType
@@ -19,7 +19,8 @@ const defaultValue: IPagedProduct = {
     products: [],
     setProducts: () => {},
     orderMethodName: '',
-    setOrderMethodName: () => ''
+    setOrderMethodName: () => '',
+    loading: false
 };
 
 interface ProviderProps {
@@ -31,32 +32,17 @@ const PagedProductContext = createContext<IPagedProduct>(defaultValue)
 function PagedProductProvider({children}: ProviderProps): JSX.Element {
 
     const {page} = usePageContext()
-    const {products: productsArr} = useProductContext()
-    const [products, setProducts] = useState(paginateArray([...productsArr], page.index))
+    const {products: productsArr, loading} = useProductContext()
+    const [products, setProducts] = useState([...productsArr])
     const [orderMethodName, setOrderMethodName] = useState('mostrecent')
 
     useEffect(() => {
-        let newProductsPage = paginateArray([...productsArr], page.index)
-
-        if(orderMethodName == 'mostrecent') newProductsPage = mostRecent(newProductsPage)
-        else if(orderMethodName == 'lowestprice') newProductsPage = lowestPrice(newProductsPage)
-        else if(orderMethodName == 'highestprice') newProductsPage = highestPrice(newProductsPage)
-
+        const newProductsPage = sortBy(orderMethodName, [...productsArr], page.index)
         setProducts(newProductsPage)
-    }, [page])
-
-    useEffect(() => {
-        let newProductsPage = [...products]
-
-        if(orderMethodName == 'mostrecent') newProductsPage = mostRecent(newProductsPage)
-        else if(orderMethodName == 'lowestprice') newProductsPage = lowestPrice(newProductsPage)
-        else if(orderMethodName == 'highestprice') newProductsPage = highestPrice(newProductsPage)
-
-        setProducts(newProductsPage)
-    }, [orderMethodName])
+    }, [page, orderMethodName])
 
     return (
-        <PagedProductContext.Provider value={{products, setProducts, orderMethodName, setOrderMethodName}}>
+        <PagedProductContext.Provider value={{products, setProducts, orderMethodName, setOrderMethodName, loading}}>
             {children}
         </PagedProductContext.Provider>
     )
@@ -67,9 +53,9 @@ function usePagedProductContext () {
 
     if( context === undefined) throw new Error('Error, context need a Product Provider')
 
-    const {products, setProducts, orderMethodName, setOrderMethodName} = context
+    const {products, setProducts, orderMethodName, setOrderMethodName, loading} = context
 
-    return {products, setProducts, orderMethodName, setOrderMethodName}
+    return {products, setProducts, orderMethodName, setOrderMethodName, loading}
 }
 
 export {usePagedProductContext, PagedProductProvider}

@@ -4,7 +4,8 @@ import Product from "./Product";
 interface UseProductType
 {
     products: Product[] | [], 
-    setProducts: Dispatch<SetStateAction<Product[]>>
+    setProducts: Dispatch<SetStateAction<Product[]>>,
+    loading: boolean
 }
 
 export default UseProductType
