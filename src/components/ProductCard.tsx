@@ -3,18 +3,38 @@ import buyBlue_SVG from '../assets/icons/buy-blue.svg'
 import buyWhite_SVG from '../assets/icons/buy-white.svg'
 import coin_SVG from '../assets/icons/coin.svg'
 import Product from '../interfaces/Product'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Button from '../UI/Button'
 import { useUserContext } from '../providers/UserProvider'
 
 import User from '../interfaces/User'
 import { usePagedProductContext } from '../providers/PagedArrayProvider'
+import { API_REEDEM, token } from '../config'
+
+import useFetchP from '../hooks/useFetchP'
+
+const reqOptions = (productId: string) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({'productId': productId})
+  }
+  return options
+}
+
 
 const ProductCard = (product: Product) => { 
     const {products} = usePagedProductContext()
     const {user, setUser} = useUserContext()
     const [mouseHover, setMouseHover] = useState(false)
-
+    const [data, setData] = useState(undefined)
+    const [loading, setLoading] = useState(false)
+    const [err, setErr] = useState(null)
+    
     const isBuildeable = useMemo(() => {
       return user.points >= product.cost
     },[user.points, products])
@@ -29,13 +49,21 @@ const ProductCard = (product: Product) => {
       setMouseHover(false)
     }
 
-    const shopProduct = () => {
+    const shopProduct = async () => {
       const newUser:User = {...user}
       const dif = user.points - product.cost
       newUser.points = dif
-
+      const {data: newData, loading: newLoading, err: newErr} = await useFetchP({API: API_REEDEM,  options: reqOptions(product._id)})
+      setData(newData)
+      setLoading(newLoading)
+      setErr(newErr)
+      
       setUser(newUser)
     }
+
+    useEffect(()=> {
+      console.log(data, loading, err)
+    }, [data, loading, err])
   
   return (
     <div className='ProductCard' onMouseEnter={showBuildInfo} onMouseLeave={hideBuildInfo}>
