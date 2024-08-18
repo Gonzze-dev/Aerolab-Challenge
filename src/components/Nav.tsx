@@ -6,7 +6,7 @@ import { Link} from 'react-router-dom'
 import { useUserContext } from '../providers/UserProvider'
 import { useMemo } from 'react'
 import { API_ADD_POINTS, token } from '../config'
-import useFetchP from '../hooks/useFetchP'
+import fetchData from '../utilities/fetchData'
 
 const reqOptions = (amount: number) => {
     const options = {
@@ -53,7 +53,7 @@ const Nav = () => {
         const newUser = {...user}
         newUser.points = newUser.points + amount
 
-        const {loading} = await useFetchP({API: API_ADD_POINTS,  options: reqOptions(amount)})
+        const {loading} = await fetchData({API: API_ADD_POINTS,  options: reqOptions(amount)})
 
         if (!loading) setUser(newUser)
     }

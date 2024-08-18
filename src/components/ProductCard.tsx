@@ -11,7 +11,7 @@ import User from '../interfaces/User'
 import { usePagedProductContext } from '../providers/PagedArrayProvider'
 import { API_REEDEM, token } from '../config'
 
-import useFetchP from '../hooks/useFetchP'
+import fetchData from '../utilities/fetchData'
 
 const reqOptions = (productId: string) => {
   const options = {
@@ -53,7 +53,7 @@ const ProductCard = (product: Product) => {
       const newUser:User = {...user}
       const dif = user.points - product.cost
       newUser.points = dif
-      const {data: newData, loading: newLoading, err: newErr} = await useFetchP({API: API_REEDEM,  options: reqOptions(product._id)})
+      const {data: newData, loading: newLoading, err: newErr} = await fetchData({API: API_REEDEM,  options: reqOptions(product._id)})
       setData(newData)
       setLoading(newLoading)
       setErr(newErr)

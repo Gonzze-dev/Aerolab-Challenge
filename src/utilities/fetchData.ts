@@ -1,6 +1,6 @@
 
 
-import getData from '../utilities/getData';
+import getData from './getData';
 
 interface Params{
     API: string;
@@ -8,7 +8,7 @@ interface Params{
 }
 
 
-async function useFetchP({ API, options = {}}: Params) {
+async function fetchData({ API, options = {}}: Params) {
     let loading = true
     let data = undefined
     let err = null
@@ -24,4 +24,4 @@ async function useFetchP({ API, options = {}}: Params) {
 
 }
 
-export default useFetchP;
+export default fetchData;
