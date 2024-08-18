@@ -49,6 +49,8 @@ const Nav = () => {
     },[user.points])
 
     const addPoints = async () => {
+        if (user.points >= 40000) return //es para controlar que los que usen la paguina no agregen muchas monedas
+
         const amount: number = 1000
         const newUser = {...user}
         newUser.points = newUser.points + amount
