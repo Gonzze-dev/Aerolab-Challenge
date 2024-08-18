@@ -7,7 +7,7 @@ const PurchasedProduct = (product: Product) => {
   return (
     <div className='PurchasedProduct'>
         <div className='PurchasedProduct-Container'>
-          <img className='PurchasedProduct-Img' src={product.img.hdUrl} alt={`image product ${product.name}`} width={252} height={182}/>
+          <img className='PurchasedProduct-Img' src={product.img.url} alt={`image product ${product.name}`} width={252} height={182}/>
           <div className='PurchasedProduct-Info'>
             <p className='PurchasedProduct-Info-Category'>{product.category}</p>
             <strong className='PurchasedProduct-Info-Name'>{product.name}</strong>
