@@ -1,11 +1,11 @@
-import History from "./History"
+import Product from "./Product"
 
 interface User
 {
     id: string
     name: string
     points: number
-    reedemHistory: History[]
+    redeemHistory: Product[]
     createDate: string
 }
 

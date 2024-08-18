@@ -16,7 +16,7 @@ const defaultUser: User = {
     id: '1',
     name: 'Gonzalo',
     points: 2000,
-    reedemHistory: [],
+    redeemHistory: [],
     createDate: ''
 }
 
@@ -29,7 +29,7 @@ const UserContext = createContext<UseUserType>(defaultUseUser)
 
 const UserProvieder = ({children}: Props) => {
     //API_GET_USER
-    const {data, loading} = useFetch<User>({API: ''})
+    const {data, loading} = useFetch<User>({API: API_GET_USER})
     const [userLS, setUserLS] = useLocalStorage<User>('User', defaultUser)
 
     useEffect(() => {
