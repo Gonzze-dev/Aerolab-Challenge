@@ -55,10 +55,14 @@
 {
     margin: 0px;
 }
-
+.NavBar-UserInfo-AddMoney-Button
+{
+    cursor: pointer;
+}
 .NavBar-UserInfo-Money-Container
 {
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -69,6 +73,15 @@
     box-sizing: border-box;
 }
 
+.NavBar-UserInfo-addCoinSimbol
+{
+    color: rgb(96, 149, 43);
+    font-size: 25px;
+    font-weight: 700;
+    position: absolute;
+    top: 17px;
+    right: 50px;
+}
 .NavBar-UserInfo-Money
 {
     margin: 0px 5px 0px 0px;
