@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import getData from '../utilities/getData';
 
 import User from '../interfaces/User';
-import History from '../interfaces/History';
 import UseUserType from '../interfaces/UseUserType';
 
 interface Params {
@@ -13,7 +12,7 @@ const defaultUser: User = {
     id: '',
     name: '',
     points: 0,
-    reedemHistory: [],
+    redeemHistory: [],
     createDate: ''
 }
 function useGetUser({API_GET_USER}: Params): UseUserType

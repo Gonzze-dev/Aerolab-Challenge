@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import getData from '../utilities/getData';
 import Product from '../interfaces/Product';
-import UseProductType from '../interfaces/UseProductType';
 
 interface Params {
     API_GET_PRODUCTS: string;
 }
 
-function useGetProducts({API_GET_PRODUCTS}: Params): UseProductType
+function useGetProducts({API_GET_PRODUCTS}: Params)
 {
     const [products, setProducts] = useState<Product[]>([])
 
