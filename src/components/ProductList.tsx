@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import '../css/components/ProductList.css'
 
 
@@ -10,7 +9,7 @@ import ProductCard from './ProductCard'
 const ProductList = () => {
   const {products, loading} = usePagedProductContext()
 
-  useEffect(() => console.log(products), [loading])
+
   return (
     <>
     {loading ?

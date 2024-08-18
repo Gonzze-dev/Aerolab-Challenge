@@ -3,7 +3,7 @@ import buyBlue_SVG from '../assets/icons/buy-blue.svg'
 import buyWhite_SVG from '../assets/icons/buy-white.svg'
 import coin_SVG from '../assets/icons/coin.svg'
 import Product from '../interfaces/Product'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import Button from '../UI/Button'
 import { useUserContext } from '../providers/UserProvider'
 
@@ -31,10 +31,7 @@ const ProductCard = (product: Product) => {
     const {products} = usePagedProductContext()
     const {user, setUser} = useUserContext()
     const [mouseHover, setMouseHover] = useState(false)
-    const [data, setData] = useState(undefined)
-    const [loading, setLoading] = useState(false)
-    const [err, setErr] = useState(null)
-    
+
     const isBuildeable = useMemo(() => {
       return user.points >= product.cost
     },[user.points, products])
@@ -53,18 +50,11 @@ const ProductCard = (product: Product) => {
       const newUser:User = {...user}
       const dif = user.points - product.cost
       newUser.points = dif
-      const {data: newData, loading: newLoading, err: newErr} = await fetchData({API: API_REEDEM,  options: reqOptions(product._id)})
-      setData(newData)
-      setLoading(newLoading)
-      setErr(newErr)
-      
-      setUser(newUser)
-    }
+      const {loading} = await fetchData({API: API_REEDEM,  options: reqOptions(product._id)})
 
-    useEffect(()=> {
-      console.log(data, loading, err)
-    }, [data, loading, err])
-  
+      if (!loading) setUser(newUser)
+    }
+    
   return (
     <div className='ProductCard' onMouseEnter={showBuildInfo} onMouseLeave={hideBuildInfo}>
         {

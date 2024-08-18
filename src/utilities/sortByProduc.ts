@@ -11,7 +11,7 @@ const mostRecent = (products: Product[]) => {
 const lowestPrice = (products: Product[]) => {
     const newProducts = [...products]
     newProducts.sort((a,b) => sortByLowest(a.cost, b.cost))
-    console.log('active')
+
     return newProducts
 }
 

@@ -1,10 +1,10 @@
-import { createContext, ReactNode, useContext, useEffect } from 'react'
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { API_GET_USER } from '../config'
 
 import UseUserType from '../interfaces/UseUserType'
 
 import User from '../interfaces/User'
-import { useLocalStorage } from '../hooks/useLocalStorage'
+
 import useFetch from '../hooks/useFetch'
 
 
@@ -30,7 +30,7 @@ const UserContext = createContext<UseUserType>(defaultUseUser)
 const UserProvieder = ({children}: Props) => {
     //API_GET_USER
     const {data, loading} = useFetch<User>({API: API_GET_USER})
-    const [userLS, setUserLS] = useLocalStorage<User>('User', defaultUser)
+    const [userLS, setUserLS] = useState<User>(defaultUser)
 
     useEffect(() => {
         if (!loading) 
