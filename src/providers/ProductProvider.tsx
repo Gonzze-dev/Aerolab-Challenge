@@ -32,8 +32,8 @@ interface ProductProviderProps {
 const ProductContext = createContext<UseProductType>(defaultValueProductType)
 
 function ProductProvider({children}: ProductProviderProps): JSX.Element {
-    //API_GET_PRODUCTS
-    const {data, loading} = useFetch<Product[]>({API: ''})
+
+    const {data, loading} = useFetch<Product[]>({API: API_GET_PRODUCTS})
     const [products, setProducts] = useState<Product[]>(defaultProduct)
 
     useEffect(() => {

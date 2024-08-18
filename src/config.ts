@@ -1,4 +1,5 @@
 const token = import.meta.env.VITE_TOKEN || '';
+
 const API_START = import.meta.env.VITE_API;
 
 const API_GET_PRODUCTS = API_START + `products?token=${token}`;
