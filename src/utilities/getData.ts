@@ -7,7 +7,7 @@ async function getData<T>(API: string, options: RequestInit = {}): Promise<T>
         data = await response.json()
 
     } catch (e) {
-        console.log(`Error to fetch ${API} \n ${e}`)
+        console.log(`Error to fetch API \n ${e}`)
     }finally{
         return data
     }
